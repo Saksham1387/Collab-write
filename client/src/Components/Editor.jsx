@@ -6,6 +6,7 @@ import styled from "@emotion/styled"
 import {io} from "socket.io-client"
 import { useParams } from "react-router-dom";
 import {NavBar} from "./NavBar"
+
 const Component = styled.div`
 background: #F5F5F5;
 margin: 0;
@@ -45,7 +46,9 @@ export function Editor(){
     },[])
 
     useEffect(()=>{
-        const socketServer = io('http://localhost:9000');
+        const url =import.meta.env.VITE_API_KEY;
+        console.log(url)
+        const socketServer = io("http://localhost:9000");
         setSocket(socketServer)
         return ()=>{
             socketServer.disconnect();
