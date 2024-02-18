@@ -54,7 +54,7 @@ export function Editor(){
         return ()=>{
             socketServer.disconnect();
         }
-    },[import.meta.env.VITE_API_KEY])
+    },[])
 
     useEffect(()=>{
         if(socket === null || quill === null){
