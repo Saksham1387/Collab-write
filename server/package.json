@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "runbuild": "node ./build/index.js",
-    "build": "esbuild index.js --bundle --platform=node --outfile=build/index.js"
+    "runbuild": "node ./public/index.js",
+    "build": "esbuild index.js --bundle --platform=node --outfile=public/index.js"
   },
   "author": "",
   "license": "ISC",
