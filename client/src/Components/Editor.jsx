@@ -48,12 +48,13 @@ export function Editor(){
     useEffect(()=>{
         const url =import.meta.env.VITE_API_KEY;
         console.log(url)
-        const socketServer = io("http://localhost:9000");
+        const socketServer = io(url);
+        console.log(socketServer)
         setSocket(socketServer)
         return ()=>{
             socketServer.disconnect();
         }
-    },[])
+    },[import.meta.env.VITE_API_KEY])
 
     useEffect(()=>{
         if(socket === null || quill === null){
