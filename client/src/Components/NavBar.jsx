@@ -1,6 +1,10 @@
 import { useParams,useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { increment } from './counterSlice'
 
 export function NavBar() {
+    const count = useSelector(state => state.counter.value);
+    const dispatch = useDispatch();
     const {id} = useParams();
     const navigate = useNavigate()
     const handleCopyClick = async () => {
@@ -79,23 +83,21 @@ export function NavBar() {
                 Copy Your Id
               </button>
             </li>
+
+
+            <li>
+              <button
+                onClick={() => dispatch(increment())}
+                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >
+                Download Doc
+              </button>
+            </li>
+            
           </ul>
         </div>
       </div>
     </nav>
-
-    // <div className="bg-gray-800 ">
-    //     <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
-    //      focus:ring-gray-300 font-medium  text-sm px-5 pt-2.5 pb-3
-    //      dark:bg-gray-800 dark:hover:bg-gray-500 dark:focus:ring-gray-700 dark:border-gray-700">HOME</button>
-    //     <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
-    //      focus:ring-gray-300 font-medium  text-sm px-5 pt-2.5 pb-3
-    //      dark:bg-gray-800 dark:hover:bg-gray-500 dark:focus:ring-gray-700 dark:border-gray-700">SAVE</button>
-    //     <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4
-    //      focus:ring-gray-300 font-medium  text-sm px-5 pt-2.5 pb-3
-    //      dark:bg-gray-800 dark:hover:bg-gray-500 dark:focus:ring-gray-700 dark:border-gray-700">COPY LINK</button>
-    //      <button className="hover:bg-gray-50">HELLO</button>
-    // </div>
   );
 }
 export default NavBar;
